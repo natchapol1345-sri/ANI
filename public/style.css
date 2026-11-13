@@ -259,16 +259,19 @@ a { color: inherit; }
 .hero-inner { position: relative; z-index: 2; padding: 2rem 1rem; }
 
 .hero-title {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(2.8rem, 10vw, 7rem);
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: clamp(1.8rem, 6.5vw, 5.5rem);
+  font-weight: 700;
   color: var(--gold);
+  letter-spacing: 0.08em;
   text-shadow:
     0 0 30px rgba(255,215,0,0.8),
     0 0 60px rgba(255,183,71,0.4),
     0 4px 12px rgba(0,0,0,0.5);
-  line-height: 1.1;
+  line-height: 1.25;
   opacity: 0;
   animation: fadeInFloat 1.4s ease forwards 0.3s;
+  word-break: break-word;
 }
 
 @keyframes fadeInFloat {
