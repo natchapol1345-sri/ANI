@@ -32,7 +32,10 @@ const wishLimiter = rateLimit({
 
 // ── Paths ─────────────────────────────────────────────────────────────────────
 const configPath = path.join(__dirname, 'config.json');
-const wishesPath = path.join(__dirname, 'wishes.json');
+// Use /tmp on Vercel (read-only fs), fallback to local for development
+const wishesPath = process.env.VERCEL
+  ? '/tmp/wishes.json'
+  : path.join(__dirname, 'wishes.json');
 
 // ── GET /api/config ───────────────────────────────────────────────────────────
 app.get('/api/config', (req, res, next) => {

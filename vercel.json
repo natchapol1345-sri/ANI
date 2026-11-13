@@ -1,9 +1,14 @@
 {
   "version": 2,
   "builds": [
-    { "src": "server/server.js", "use": "@vercel/node" }
+    { "src": "server/server.js", "use": "@vercel/node" },
+    { "src": "public/**", "use": "@vercel/static" }
   ],
   "routes": [
+    { "src": "/api/(.*)", "dest": "server/server.js" },
+    { "src": "/images/(.*)", "dest": "public/images/$1" },
+    { "src": "/audio/(.*)", "dest": "public/audio/$1" },
+    { "src": "/(.*\\.(css|js|txt|ico|png|jpg|jpeg|gif|svg|webp|woff|woff2))", "dest": "public/$1" },
     { "src": "/(.*)", "dest": "server/server.js" }
   ]
 }
