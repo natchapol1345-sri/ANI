@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#FF6B6B" />
+  <title>Happy Anniversary</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Noto+Sans+Thai:wght@300;400;600&family=Poppins:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════
+       OPENING OVERLAY
+  ══════════════════════════════════════════ -->
+  <div id="overlay" class="overlay" role="dialog" aria-label="Open anniversary site" aria-modal="true">
+    <div class="overlay-bg"></div>
+    <div class="overlay-content">
+      <button class="heart-btn" id="openBtn" aria-label="Tap to open">
+        <span class="heart-icon" aria-hidden="true">❤️</span>
+        <span class="heart-pulse" aria-hidden="true"></span>
+      </button>
+      <p class="overlay-label-th" lang="th">แตะเพื่อเปิด</p>
+      <p class="overlay-label-en">Tap to Open</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       MUSIC PLAYER (fixed)
+  ══════════════════════════════════════════ -->
+  <button id="musicBtn" class="music-btn" aria-label="Toggle music" hidden>
+    <span id="musicIcon">♪</span>
+  </button>
+
+  <!-- ══════════════════════════════════════════
+       FLOATING HEARTS LAYER
+  ══════════════════════════════════════════ -->
+  <div class="hearts-layer" aria-hidden="true" id="heartsLayer"></div>
+
+  <!-- ══════════════════════════════════════════
+       MAIN CONTENT
+  ══════════════════════════════════════════ -->
+  <main id="main" class="main-hidden">
+
+    <!-- § 1  HERO ───────────────────────────── -->
+    <section id="hero" class="hero section">
+      <div class="hero-inner">
+        <h1 class="hero-title" id="heroTitle">HAPPY ANNIVERSARY</h1>
+        <p class="hero-names" id="heroNames">&nbsp;</p>
+        <p class="hero-since" id="heroSince">&nbsp;</p>
+      </div>
+      <!-- sparkles -->
+      <div class="sparkles-layer" aria-hidden="true" id="sparklesLayer"></div>
+    </section>
+
+    <!-- § 2  DAYS COUNTER ───────────────────── -->
+    <section id="counter" class="counter-section section">
+      <div class="section-inner">
+        <h2 class="section-heading">เวลาที่เราอยู่ด้วยกัน</h2>
+        <p class="section-subheading">Time Together</p>
+        <div class="counter-grid">
+          <div class="counter-card">
+            <span class="counter-num" id="cYears">0</span>
+            <span class="counter-label">ปี / Years</span>
+          </div>
+          <div class="counter-card">
+            <span class="counter-num" id="cMonths">0</span>
+            <span class="counter-label">เดือน / Months</span>
+          </div>
+          <div class="counter-card">
+            <span class="counter-num" id="cDays">0</span>
+            <span class="counter-label">วัน / Days</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- § 3  PHOTO GALLERY ──────────────────── -->
+    <section id="gallery" class="gallery-section section">
+      <div class="section-inner">
+        <h2 class="section-heading">ความทรงจำ</h2>
+        <p class="section-subheading">Our Memories</p>
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- § 4  LOVE MESSAGE ───────────────────── -->
+    <section id="message" class="message-section section">
+      <div class="section-inner">
+        <h2 class="section-heading">จดหมายรัก</h2>
+        <p class="section-subheading">Love Letter</p>
+        <div class="message-card">
+          <div class="message-deco" aria-hidden="true">❤️</div>
+          <div class="message-text" id="messageText" lang="th"></div>
+          <div class="message-cursor" id="msgCursor" aria-hidden="true">|</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- § 5  WISH FORM ──────────────────────── -->
+    <section id="wishes" class="wish-section section">
+      <div class="section-inner">
+        <h2 class="section-heading">ฝากความปรารถนาดี</h2>
+        <p class="section-subheading">Leave a Wish</p>
+        <div class="wish-card">
+          <form id="wishForm" class="wish-form" novalidate>
+            <div class="form-group">
+              <label for="wishName">ชื่อ / Name</label>
+              <input
+                type="text"
+                id="wishName"
+                name="name"
+                placeholder="Your name…"
+                maxlength="100"
+                autocomplete="name"
+                required
+              />
+              <span class="field-error" id="nameError" role="alert"></span>
+            </div>
+            <div class="form-group">
+              <label for="wishMessage">ข้อความ / Message</label>
+              <textarea
+                id="wishMessage"
+                name="message"
+                placeholder="Leave your wish here…"
+                maxlength="1000"
+                rows="4"
+                required
+              ></textarea>
+              <span class="field-error" id="msgError" role="alert"></span>
+            </div>
+            <button type="submit" class="submit-btn">
+              <span>ส่งความปรารถนา ❤️</span>
+            </button>
+            <div class="form-status" id="formStatus" role="alert" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER ──────────────────────────────── -->
+    <footer class="site-footer">
+      <p class="footer-main">Forever yours ❤️</p>
+      <p class="footer-copy">© <span id="footerYear"></span> — Made with love</p>
+    </footer>
+
+  </main><!-- /main -->
+
+  <script src="script.js"></script>
+</body>
+</html>

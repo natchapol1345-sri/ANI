@@ -1,0 +1,4 @@
+node_modules/
+server/wishes.json
+.env
+*.log
